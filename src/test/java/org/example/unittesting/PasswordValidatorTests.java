@@ -130,15 +130,15 @@ public class PasswordValidatorTests {
     }
 
     @Test
-    void onlySpecialChars() {
-        // Arrange
-        String password = "@@@@@@@@";
-        boolean expected = false;
+void onlySpecialChars() {
+    // Arrange
+    String password = "@@@@@@@@"; // Solo caracteres especiales
+    boolean expected = false; // Se espera que sea inválida, ya que no cumple con los otros criterios
 
-        // Act
-        boolean actual = passwordValidator.validate(password);
+    // Act
+    boolean actual = passwordValidator.validate(password);
 
-        // Assert
-        assertEquals(expected, actual);
-    }
+    // Assert
+    assertEquals(expected, actual); // Se espera que sea false
+}
 }

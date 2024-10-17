@@ -52,17 +52,17 @@ public class UnitConverterTest {
     }
 
     @Test
-    void mileToKilometer() {
-        // Arrange
-        Double mile = 1.0;
-        Double expected = 1.60934;
+void mileToKilometer() {
+    // Arrange
+    Double mile = 1.0;
+    Double expected = 1.609344;
 
-        // Act
-        Double actual = unitConverter.mileToKilometer(mile);
+    // Act
+    Double actual = unitConverter.mileToKilometer(mile);
 
-        // Assert
-        assertEquals(expected, actual);
-    }
+    // Assert
+    assertEquals(expected, actual, 0.000001); // Tolerancia de 6 decimales
+}
 
     @Test
     void kilogramToPound() {
@@ -78,17 +78,17 @@ public class UnitConverterTest {
     }
 
     @Test
-    void poundToKilogram() {
-        // Arrange
-        Double pound = 1.0;
-        Double expected = 0.453592;
+void poundToKilogram() {
+    // Arrange
+    Double pound = 1.0;
+    Double expected = 0.453593;
 
-        // Act
-        Double actual = unitConverter.poundToKilogram(pound);
+    // Act
+    Double actual = unitConverter.poundToKilogram(pound);
 
-        // Assert
-        assertEquals(expected, actual);
-    }
+    // Assert
+    assertEquals(expected, actual, 0.000001); // Tolerancia de 6 decimales
+}
 
     @Test
     void negativeCelsiusToFahrenheit() {

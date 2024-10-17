@@ -1,10 +1,23 @@
 package org.example.unittesting.services;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class UnitConverterService {
+
+    private static final int DECIMAL_PLACES = 6;
+
+    private Double round(Double value) {
+        if (value == null) {
+            return null;
+        }
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(DECIMAL_PLACES, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 
     /**
      * Convert celsius to fahrenheit
@@ -12,7 +25,7 @@ public class UnitConverterService {
      * @return temperature in fahrenheit
      */
     public Double celsiusToFahrenheit(Double celsius) {
-        return (celsius * 9/5) + 32;
+        return round((celsius * 9 / 5) + 32);
     }
 
     /**
@@ -21,7 +34,7 @@ public class UnitConverterService {
      * @return temperature in celsius
      */
     public Double fahrenheitToCelsius(Double fahrenheit) {
-        return (fahrenheit - 32) * 5/9;
+        return round((fahrenheit - 32) * 5 / 9);
     }
 
     /**
@@ -30,7 +43,7 @@ public class UnitConverterService {
      * @return distance in mile
      */
     public Double kilometerToMile(Double kilometer) {
-        return kilometer * 0.621371;
+        return round(kilometer * 0.621371);
     }
 
     /**
@@ -39,7 +52,7 @@ public class UnitConverterService {
      * @return distance in kilometer
      */
     public Double mileToKilometer(Double mile) {
-        return mile / 0.621371;
+        return round(mile / 0.621371);
     }
 
     /**
@@ -48,7 +61,7 @@ public class UnitConverterService {
      * @return weight in pound
      */
     public Double kilogramToPound(Double kilogram) {
-        return kilogram * 2.20462;
+        return round(kilogram * 2.20462);
     }
 
     /**
@@ -57,6 +70,6 @@ public class UnitConverterService {
      * @return weight in kilogram
      */
     public Double poundToKilogram(Double pound) {
-        return pound / 2.20462;
+        return round(pound / 2.20462);
     }
 }
